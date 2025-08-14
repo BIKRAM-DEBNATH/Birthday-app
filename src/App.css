@@ -1,0 +1,1628 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Georgia", "Times New Roman", serif;
+  overflow-x: hidden;
+  /* Updated to black and purple gradient theme */
+  background: linear-gradient(135deg, #1a0033, #4c1d95, #7c3aed, #2d1b69);
+  background-size: 400% 400%;
+  animation: gradientShift 8s ease infinite;
+  min-height: 100vh;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.app {
+  position: relative;
+  min-height: 100vh;
+  /* Changed from flex center to block layout for long scroll */
+  display: block;
+  padding: 0;
+}
+
+/* Added hero section styles */
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.hero-content {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 30px;
+  padding: 4rem 3rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+}
+
+.hero-title {
+  font-size: 4rem;
+  font-weight: 300;
+  color: #fff;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1rem;
+  animation: heroGlow 3s ease-in-out infinite alternate;
+}
+
+.hero-subtitle {
+  font-size: 2.5rem;
+  font-weight: 200;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.hero-description {
+  font-size: 1.3rem;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+.hero-decoration {
+  font-size: 3rem;
+  animation: bounce 2s infinite;
+}
+
+@keyframes heroGlow {
+  from {
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 182, 193, 0.3);
+  }
+  to {
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 40px rgba(255, 182, 193, 0.8);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Modified main slideshow section */
+.main-slideshow-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+/* Slideshow Container */
+.slideshow-container {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.slideshow-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  animation: fadeIn 1s ease-in-out;
+  transition: transform 0.3s ease;
+}
+
+.slideshow-image:hover {
+  transform: scale(1.05);
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Updated overlay to purple tones */
+  background: linear-gradient(to bottom, rgba(124, 58, 237, 0.1) 0%, rgba(76, 29, 149, 0.2) 100%);
+  pointer-events: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Message Styling */
+.message-container {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.romantic-message {
+  font-size: 2rem;
+  font-weight: 300;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  line-height: 1.4;
+  animation: messageGlow 2s ease-in-out infinite alternate;
+  padding: 1rem;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 182, 193, 0.2));
+  border-radius: 15px;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@keyframes messageGlow {
+  from {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 182, 193, 0.3);
+  }
+  to {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 182, 193, 0.6);
+  }
+}
+
+/* Progress Indicator */
+.progress-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  /* Updated progress bar to purple gradient */
+  background: linear-gradient(90deg, #7c3aed, #a855f7);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+  box-shadow: 0 0 10px rgba(124, 58, 237, 0.5);
+}
+
+.progress-text {
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  min-width: 80px;
+  text-align: right;
+}
+
+/* Added memory section styles */
+.memory-section {
+  padding: 4rem 2rem;
+  margin: 2rem 0;
+}
+
+.memory-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.memory-title {
+  font-size: 3rem;
+  font-weight: 300;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1rem;
+}
+
+.memory-subtitle {
+  font-size: 1.3rem;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  opacity: 0.9;
+  font-style: italic;
+}
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.memory-card {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.memory-card:hover {
+  transform: translateY(-10px);
+}
+
+.memory-image {
+  width: 100%;
+  height: 300px;
+  object-fit: contain;
+}
+
+.memory-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  padding: 2rem 1rem 1rem;
+  /* Remove translateY to make overlay always visible */
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+}
+
+/* Remove hover effect for memory overlay since it's now always visible */
+.memory-card:hover .memory-overlay {
+  transform: translateY(0);
+}
+
+.memory-text {
+  color: #fff;
+  font-size: 1.1rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  line-height: 1.4;
+}
+
+/* Added quote section styles */
+.quote-section {
+  padding: 6rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+}
+
+.quote-container {
+  text-align: center;
+  max-width: 800px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 25px;
+  padding: 3rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+}
+
+.romantic-quote {
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  line-height: 1.5;
+  font-style: italic;
+  margin-bottom: 2rem;
+}
+
+.quote-decoration {
+  font-size: 3rem;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+/* Added wishes section styles */
+.wishes-section {
+  padding: 4rem 2rem;
+  margin: 2rem 0;
+}
+
+.wishes-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.wishes-title {
+  font-size: 3.5rem;
+  font-weight: 300;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1rem;
+}
+
+.wishes-subtitle {
+  font-size: 1.4rem;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  opacity: 0.9;
+  font-style: italic;
+}
+
+.wishes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.wish-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  position: relative;
+}
+
+.wish-card:hover {
+  transform: translateY(-5px);
+}
+
+.wish-number {
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  /* Updated timeline numbers to purple gradient */
+  background: linear-gradient(45deg, #7c3aed, #a855f7);
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.wish-text {
+  color: #fff;
+  font-size: 1.1rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  line-height: 1.5;
+  margin-top: 1rem;
+}
+
+/* Added timeline section styles */
+.timeline-section {
+  padding: 4rem 2rem;
+  margin: 2rem 0;
+}
+
+.timeline-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.timeline-title {
+  font-size: 3.5rem;
+  font-weight: 300;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.timeline {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  /* Updated timeline line to purple gradient */
+  background: linear-gradient(to bottom, #7c3aed, #a855f7);
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 4rem;
+  display: flex;
+  align-items: center;
+}
+
+.timeline-item:nth-child(odd) {
+  flex-direction: row;
+}
+
+.timeline-item:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  /* Updated timeline markers to purple gradient */
+  background: linear-gradient(45deg, #7c3aed, #a855f7);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.3);
+  z-index: 1;
+}
+
+.timeline-content {
+  width: 45%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-month {
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1rem;
+}
+
+.timeline-text {
+  color: #fff;
+  font-size: 1.1rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+}
+
+.timeline-image {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+/* Added collage section styles */
+.collage-section {
+  padding: 4rem 2rem;
+  margin: 2rem 0;
+}
+
+.collage-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.collage-title {
+  font-size: 3rem;
+  font-weight: 300;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.photo-collage {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 200px);
+  gap: 1rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.collage-item {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.collage-item:hover {
+  transform: scale(1.05);
+  z-index: 1;
+}
+
+.collage-item.item-1 {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.collage-item.item-5 {
+  grid-column: span 2;
+}
+
+.collage-item.item-9 {
+  grid-row: span 2;
+}
+
+.collage-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Added final message section styles */
+.final-message-section {
+  padding: 6rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+}
+
+.final-message-container {
+  text-align: center;
+  max-width: 900px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 30px;
+  padding: 4rem 3rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+}
+
+.final-title {
+  font-size: 3.5rem;
+  font-weight: 300;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 2rem;
+}
+
+.final-text {
+  font-size: 1.4rem;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.final-decoration {
+  font-size: 3rem;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+/* Added footer styles */
+.footer {
+  padding: 4rem 2rem;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.footer-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.footer-text {
+  font-size: 1.5rem;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1rem;
+}
+
+.footer-subtext {
+  font-size: 1.2rem;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  margin-bottom: 2rem;
+  opacity: 0.8;
+}
+
+.footer-hearts {
+  font-size: 2rem;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+/* Audio Controls */
+.audio-controls {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 1000;
+}
+
+.control-btn {
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  /* Updated control buttons to purple gradient */
+  background: linear-gradient(45deg, #7c3aed, #a855f7);
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.control-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.control-btn:active {
+  transform: translateY(0);
+}
+
+/* Adding auto scroll button styles */
+.auto-scroll-btn.active {
+  background: linear-gradient(45deg, #4ade80, #22c55e);
+  animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+  0%,
+  100% {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  50% {
+    box-shadow: 0 5px 25px rgba(34, 197, 94, 0.4);
+  }
+}
+
+/* Floating Hearts Animation */
+.floating-hearts {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.heart {
+  position: absolute;
+  font-size: 2rem;
+  animation: floatUp 6s infinite linear;
+  opacity: 0.7;
+}
+
+.heart-1 {
+  left: 10%;
+  animation-delay: 0s;
+}
+.heart-2 {
+  left: 20%;
+  animation-delay: 1s;
+}
+.heart-3 {
+  left: 30%;
+  animation-delay: 2s;
+}
+.heart-4 {
+  left: 40%;
+  animation-delay: 3s;
+}
+.heart-5 {
+  left: 50%;
+  animation-delay: 4s;
+}
+.heart-6 {
+  left: 60%;
+  animation-delay: 5s;
+}
+.heart-7 {
+  left: 70%;
+  animation-delay: 0.5s;
+}
+.heart-8 {
+  left: 80%;
+  animation-delay: 1.5s;
+}
+.heart-9 {
+  left: 90%;
+  animation-delay: 2.5s;
+}
+.heart-10 {
+  left: 15%;
+  animation-delay: 3.5s;
+}
+.heart-11 {
+  left: 25%;
+  animation-delay: 4.5s;
+}
+.heart-12 {
+  left: 35%;
+  animation-delay: 5.5s;
+}
+.heart-13 {
+  left: 45%;
+  animation-delay: 0.8s;
+}
+.heart-14 {
+  left: 55%;
+  animation-delay: 1.8s;
+}
+.heart-15 {
+  left: 65%;
+  animation-delay: 2.8s;
+}
+
+@keyframes floatUp {
+  0% {
+    bottom: -100px;
+    transform: translateX(0px) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 0.7;
+  }
+  100% {
+    bottom: 100vh;
+    transform: translateX(-100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Floating Balloons */
+.floating-balloons {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.balloon {
+  position: absolute;
+  font-size: 2.5rem;
+  animation: balloonFloat 8s infinite ease-in-out;
+  opacity: 0.6;
+}
+
+.balloon-1 {
+  left: 5%;
+  animation-delay: 0s;
+}
+.balloon-2 {
+  left: 25%;
+  animation-delay: 2s;
+}
+.balloon-3 {
+  left: 45%;
+  animation-delay: 4s;
+}
+.balloon-4 {
+  left: 65%;
+  animation-delay: 6s;
+}
+.balloon-5 {
+  left: 85%;
+  animation-delay: 1s;
+}
+.balloon-6 {
+  left: 15%;
+  animation-delay: 3s;
+}
+.balloon-7 {
+  left: 75%;
+  animation-delay: 5s;
+}
+.balloon-8 {
+  left: 95%;
+  animation-delay: 7s;
+}
+
+@keyframes balloonFloat {
+  0%,
+  100% {
+    bottom: -150px;
+    transform: translateX(0px);
+  }
+  50% {
+    bottom: 100vh;
+    transform: translateX(50px);
+  }
+}
+
+/* Confetti Animation */
+.confetti {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  /* Updated confetti to purple and black colors */
+  background: linear-gradient(45deg, #7c3aed, #a855f7, #1a0033, #4c1d95);
+  animation: confettiFall 3s infinite linear;
+}
+
+.confetti-1 {
+  left: 5%;
+  animation-delay: 0s;
+  /* Updated individual confetti colors to purple theme */
+  background: #7c3aed;
+}
+.confetti-2 {
+  left: 15%;
+  animation-delay: 0.5s;
+  background: #a855f7;
+}
+.confetti-3 {
+  left: 25%;
+  animation-delay: 1s;
+  background: #1a0033;
+}
+.confetti-4 {
+  left: 35%;
+  animation-delay: 1.5s;
+  background: #4c1d95;
+}
+
+.confetti-5 {
+  left: 45%;
+  animation-delay: 2s;
+  background: #7c3aed;
+}
+.confetti-6 {
+  left: 55%;
+  animation-delay: 2.5s;
+  background: #a855f7;
+}
+.confetti-7 {
+  left: 65%;
+  animation-delay: 0.3s;
+  background: #1a0033;
+}
+.confetti-8 {
+  left: 75%;
+  animation-delay: 0.8s;
+  background: #4c1d95;
+}
+.confetti-9 {
+  left: 85%;
+  animation-delay: 1.3s;
+  background: #7c3aed;
+}
+.confetti-10 {
+  left: 95%;
+  animation-delay: 1.8s;
+  background: #a855f7;
+}
+.confetti-11 {
+  left: 10%;
+  animation-delay: 2.3s;
+  background: #1a0033;
+}
+.confetti-12 {
+  left: 20%;
+  animation-delay: 2.8s;
+  background: #4c1d95;
+}
+.confetti-13 {
+  left: 30%;
+  animation-delay: 0.1s;
+  background: #7c3aed;
+}
+.confetti-14 {
+  left: 40%;
+  animation-delay: 0.6s;
+  background: #a855f7;
+}
+.confetti-15 {
+  left: 50%;
+  animation-delay: 1.1s;
+  background: #1a0033;
+}
+.confetti-16 {
+  left: 60%;
+  animation-delay: 1.6s;
+  background: #4c1d95;
+}
+.confetti-17 {
+  left: 70%;
+  animation-delay: 2.1s;
+  background: #7c3aed;
+}
+.confetti-18 {
+  left: 80%;
+  animation-delay: 2.6s;
+  background: #a855f7;
+}
+.confetti-19 {
+  left: 90%;
+  animation-delay: 0.4s;
+  background: #1a0033;
+}
+.confetti-20 {
+  left: 12%;
+  animation-delay: 0.9s;
+  background: #4c1d95;
+}
+
+@keyframes confettiFall {
+  0% {
+    top: -10px;
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    top: 100vh;
+    transform: rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* Corner Decorations */
+.corner-decoration {
+  position: fixed;
+  font-size: 3rem;
+  opacity: 0.3;
+  z-index: -1;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+.top-left {
+  top: 2rem;
+  left: 2rem;
+}
+
+.top-right {
+  top: 2rem;
+  right: 2rem;
+}
+
+.bottom-left {
+  bottom: 2rem;
+  left: 2rem;
+}
+
+.bottom-right {
+  bottom: 2rem;
+  right: 2rem;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.6;
+  }
+}
+
+/* Floating Birthday Emojis */
+.floating-birthday-emojis {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.birthday-emoji {
+  position: absolute;
+  font-size: 2.2rem;
+  animation: birthdayFloat 7s infinite ease-in-out;
+  opacity: 0.8;
+}
+
+.birthday-emoji-1 {
+  left: 8%;
+  animation-delay: 0s;
+}
+.birthday-emoji-2 {
+  left: 18%;
+  animation-delay: 1.2s;
+}
+.birthday-emoji-3 {
+  left: 28%;
+  animation-delay: 2.4s;
+}
+.birthday-emoji-4 {
+  left: 38%;
+  animation-delay: 3.6s;
+}
+.birthday-emoji-5 {
+  left: 48%;
+  animation-delay: 4.8s;
+}
+.birthday-emoji-6 {
+  left: 58%;
+  animation-delay: 6s;
+}
+.birthday-emoji-7 {
+  left: 68%;
+  animation-delay: 0.6s;
+}
+.birthday-emoji-8 {
+  left: 78%;
+  animation-delay: 1.8s;
+}
+.birthday-emoji-9 {
+  left: 88%;
+  animation-delay: 3s;
+}
+.birthday-emoji-10 {
+  left: 12%;
+  animation-delay: 4.2s;
+}
+.birthday-emoji-11 {
+  left: 22%;
+  animation-delay: 5.4s;
+}
+.birthday-emoji-12 {
+  left: 72%;
+  animation-delay: 0.3s;
+}
+
+@keyframes birthdayFloat {
+  0% {
+    bottom: -120px;
+    transform: translateX(0px) rotate(0deg) scale(0.8);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  85% {
+    opacity: 0.8;
+  }
+  100% {
+    bottom: 100vh;
+    transform: translateX(30px) rotate(180deg) scale(0.9);
+    opacity: 0;
+  }
+}
+
+/* Enhanced responsive design for new sections */
+@media (max-width: 768px) {
+  .hero-content {
+    padding: 2rem 1.5rem;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.8rem;
+  }
+
+  .hero-description {
+    font-size: 1.1rem;
+  }
+
+  .memory-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .memory-title,
+  .wishes-title,
+  .timeline-title,
+  .collage-title {
+    font-size: 2rem;
+  }
+
+  .romantic-quote {
+    font-size: 1.5rem;
+  }
+
+  .wishes-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .timeline::before {
+    left: 20px;
+  }
+
+  .timeline-item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 60px;
+  }
+
+  .timeline-item:nth-child(even) {
+    flex-direction: column;
+  }
+
+  .timeline-marker {
+    left: 20px;
+    transform: none;
+  }
+
+  .timeline-content {
+    width: 100%;
+  }
+
+  .photo-collage {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(6, 150px);
+  }
+
+  .collage-item.item-1 {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+
+  .collage-item.item-5 {
+    grid-column: span 1;
+  }
+
+  .collage-item.item-9 {
+    grid-row: span 1;
+  }
+
+  .final-title {
+    font-size: 2.5rem;
+  }
+
+  .final-text {
+    font-size: 1.2rem;
+  }
+
+  .main-slideshow-section {
+    padding: 1rem;
+  }
+
+  .slideshow-container {
+    padding: 1rem;
+    border-radius: 15px;
+  }
+
+  .image-container {
+    height: 300px;
+    margin-bottom: 1.5rem;
+  }
+
+  .romantic-message {
+    font-size: 1.5rem;
+    padding: 0.8rem;
+    line-height: 1.3;
+  }
+
+  .audio-controls {
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .control-btn {
+    width: 45px;
+    height: 45px;
+    font-size: 1rem;
+  }
+
+  .corner-decoration {
+    font-size: 2rem;
+  }
+
+  .top-left,
+  .top-right {
+    top: 1rem;
+  }
+
+  .bottom-left,
+  .bottom-right {
+    bottom: 1rem;
+  }
+
+  .top-left,
+  .bottom-left {
+    left: 1rem;
+  }
+
+  .top-right,
+  .bottom-right {
+    right: 1rem;
+  }
+
+  .heart,
+  .balloon {
+    font-size: 1.5rem;
+  }
+
+  .confetti-piece {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.4rem;
+  }
+
+  .memory-title,
+  .wishes-title,
+  .timeline-title,
+  .collage-title {
+    font-size: 1.8rem;
+  }
+
+  .romantic-quote {
+    font-size: 1.3rem;
+  }
+
+  .photo-collage {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(12, 200px);
+  }
+
+  .collage-item.item-1,
+  .collage-item.item-5,
+  .collage-item.item-9 {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  .slideshow-container {
+    padding: 0.8rem;
+  }
+
+  .image-container {
+    height: 250px;
+    margin-bottom: 1rem;
+  }
+
+  .romantic-message {
+    font-size: 1.2rem;
+    padding: 0.6rem;
+    line-height: 1.3;
+  }
+
+  .control-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 0.9rem;
+  }
+
+  .corner-decoration {
+    font-size: 1.5rem;
+  }
+
+  .heart,
+  .balloon {
+    font-size: 1.2rem;
+  }
+
+  .confetti-piece {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero-title {
+    font-size: 5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 3rem;
+  }
+
+  .memory-title,
+  .wishes-title,
+  .timeline-title,
+  .collage-title {
+    font-size: 4rem;
+  }
+
+  .romantic-quote {
+    font-size: 2.8rem;
+  }
+
+  .slideshow-container {
+    max-width: 1100px;
+    padding: 3rem;
+  }
+
+  .image-container {
+    height: 500px;
+  }
+
+  .romantic-message {
+    font-size: 2.5rem;
+  }
+
+  .control-btn {
+    width: 60px;
+    height: 60px;
+    font-size: 1.4rem;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus styles for accessibility */
+.control-btn:focus {
+  outline: 3px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .romantic-message {
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+  }
+
+  .slideshow-container {
+    border: 3px solid #fff;
+  }
+}
+
+/* Adding portrait gallery section styles */
+.portrait-gallery-section {
+  padding: 4rem 2rem;
+  margin: 2rem 0;
+}
+
+.gallery-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.gallery-title {
+  font-size: 3rem;
+  font-weight: 300;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1rem;
+}
+
+.gallery-subtitle {
+  font-size: 1.3rem;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  opacity: 0.9;
+  font-style: italic;
+}
+
+.portrait-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.portrait-item {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.portrait-item:hover {
+  transform: translateY(-10px);
+}
+
+.portrait-image {
+  width: 100%;
+  height: 350px;
+  object-fit: contain;
+}
+
+.portrait-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  padding: 2rem 1rem 1rem;
+  color: #fff;
+  font-size: 1.1rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  /* Make caption always visible instead of on hover */
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+}
+
+/* Adding landscape gallery section styles */
+.landscape-gallery-section {
+  padding: 4rem 2rem;
+  margin: 2rem 0;
+}
+
+.landscape-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.landscape-item {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.landscape-item:hover {
+  transform: translateY(-10px);
+}
+
+.landscape-image {
+  width: 100%;
+  height: 250px;
+  object-fit: contain;
+}
+
+.landscape-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  padding: 2rem 1rem 1rem;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  /* Make overlay always visible instead of on hover */
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+}
+
+.landscape-overlay h3 {
+  font-size: 1.3rem;
+  font-weight: 300;
+  margin-bottom: 0.5rem;
+}
+
+.landscape-overlay p {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* Adding square gallery section styles */
+.square-gallery-section {
+  padding: 4rem 2rem;
+  margin: 2rem 0;
+}
+
+.square-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.square-item {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  aspect-ratio: 1;
+}
+
+.square-item:hover {
+  transform: scale(1.05);
+}
+
+.square-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Mobile responsive updates for new gallery sections */
+@media (max-width: 768px) {
+  .portrait-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .portrait-image {
+    height: 300px;
+  }
+
+  .landscape-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .landscape-image {
+    height: 200px;
+  }
+
+  .square-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .portrait-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .portrait-image {
+    height: 250px;
+  }
+
+  .landscape-image {
+    height: 180px;
+  }
+
+  .square-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
