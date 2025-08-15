@@ -6,12 +6,12 @@ import imageManager from "./utils/imageManager"
 
 const App = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
-  const [isPlaying, setIsPlaying] = useState(false)
   const [isMuted, setIsMuted] = useState(false)
   const [isAutoScrolling, setIsAutoScrolling] = useState(false)
   const [imagesLoaded, setImagesLoaded] = useState(false)
   const [currentSlideshowImage, setCurrentSlideshowImage] = useState("")
   const [staticImages, setStaticImages] = useState([])
+  const [audioLoaded, setAudioLoaded] = useState(false)
   const audioRef = useRef(null)
   const autoScrollRef = useRef(null)
 
@@ -81,18 +81,27 @@ const App = () => {
   }, [imagesLoaded])
 
   useEffect(() => {
-    if (audioRef.current) {
+    if (audioRef.current && audioLoaded) {
       audioRef.current.volume = 0.3
-      if (isPlaying && !isMuted) {
-        audioRef.current.play().catch((error) => {
-          console.error("Audio playback failed:", error)
-          setIsPlaying(false)
-        })
-      } else {
-        audioRef.current.pause()
+      audioRef.current.muted = isMuted
+
+      // Automatically start playing when audio is loaded
+      const playPromise = audioRef.current.play()
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            console.log("[v0] Audio autoplay started successfully")
+          })
+          .catch((error) => {
+            console.error("[v0] Audio autoplay failed:", error)
+            // Show user-friendly message for autoplay restrictions
+            if (error.name === "NotAllowedError") {
+              console.log("[v0] Browser blocked autoplay - user interaction required")
+            }
+          })
       }
     }
-  }, [isPlaying, isMuted])
+  }, [audioLoaded, isMuted])
 
   useEffect(() => {
     if (isAutoScrolling) {
@@ -124,14 +133,6 @@ const App = () => {
       }
     }
   }, [isAutoScrolling])
-
-  const toggleMusic = () => {
-    if (!isPlaying && audioRef.current) {
-      audioRef.current.load()
-      console.log("Attempting to play audio...")
-    }
-    setIsPlaying(!isPlaying)
-  }
 
   const toggleMute = () => {
     setIsMuted(!isMuted)
@@ -181,14 +182,6 @@ const App = () => {
       </div>
 
       <div className="audio-controls">
-        <button
-          className="control-btn music-btn"
-          onClick={toggleMusic}
-          aria-label={isPlaying ? "Pause music" : "Play music"}
-          title={isPlaying ? "Pause music" : "Play music"}
-        >
-          {isPlaying ? "⏸️" : "▶️"}
-        </button>
         <button
           className="control-btn mute-btn"
           onClick={toggleMute}
@@ -439,8 +432,32 @@ const App = () => {
         </div>
       </footer>
 
-      <audio ref={audioRef} loop preload="auto">
+      <audio
+        ref={audioRef}
+        loop
+        autoPlay
+        preload="auto"
+        onLoadedData={() => {
+          console.log("[v0] Audio loaded, setting audioLoaded to true")
+          setAudioLoaded(true)
+        }}
+        onError={(e) => {
+          console.error("[v0] Audio loading failed:", {
+            error: e.target.error,
+            code: e.target.error?.code,
+            message: e.target.error?.message,
+            src: e.target.src,
+          })
+          console.log("[v0] Audio file not found - continuing without music")
+          setAudioLoaded(false)
+        }}
+        onCanPlay={() => {
+          console.log("[v0] Audio can play")
+        }}
+      >
         <source src="/saiyara-female-version.mp3" type="audio/mpeg" />
+        <source src="/saiyara-female-version.ogg" type="audio/ogg" />
+        <source src="/saiyara-female-version.wav" type="audio/wav" />
         Your browser does not support the audio element.
       </audio>
 
