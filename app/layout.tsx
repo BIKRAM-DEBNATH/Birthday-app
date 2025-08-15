@@ -5,8 +5,8 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'Shubhra-biswas',
-  description: 'Created with v0',
-  generator: 'v0.app',
+  description: 'Created just for you',
+  generator: 'by Bikram Debnath',
 }
 
 export default function RootLayout({
