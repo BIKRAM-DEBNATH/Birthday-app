@@ -11,6 +11,7 @@ const App = () => {
   const [isAutoScrolling, setIsAutoScrolling] = useState(false)
   const [imagesLoaded, setImagesLoaded] = useState(false)
   const [currentSlideshowImage, setCurrentSlideshowImage] = useState("")
+  const [staticImages, setStaticImages] = useState([])
   const audioRef = useRef(null)
   const autoScrollRef = useRef(null)
 
@@ -19,6 +20,11 @@ const App = () => {
       await imageManager.initialize()
       setImagesLoaded(true)
       setCurrentSlideshowImage(imageManager.getNextPhoto())
+      const preGeneratedImages = []
+      for (let i = 0; i < 100; i++) {
+        preGeneratedImages.push(imageManager.getNextPhoto())
+      }
+      setStaticImages(preGeneratedImages)
     }
     initializeImages()
   }, [])
@@ -80,7 +86,6 @@ const App = () => {
       if (isPlaying && !isMuted) {
         audioRef.current.play().catch((error) => {
           console.error("Audio playback failed:", error)
-          // Reset playing state if audio fails to play
           setIsPlaying(false)
         })
       } else {
@@ -92,7 +97,7 @@ const App = () => {
   useEffect(() => {
     if (isAutoScrolling) {
       const isMobile = window.innerWidth <= 768
-      const scrollInterval = isMobile ? 600 : 50 // 0.60 seconds for mobile, 0.05 seconds for desktop
+      const scrollInterval = isMobile ? 600 : 50
 
       autoScrollRef.current = setInterval(() => {
         const scrollAmount = isMobile ? window.innerHeight * 0.01 : window.innerHeight * 0.015
@@ -122,7 +127,6 @@ const App = () => {
 
   const toggleMusic = () => {
     if (!isPlaying && audioRef.current) {
-      // Ensure audio is loaded before trying to play
       audioRef.current.load()
       console.log("Attempting to play audio...")
     }
@@ -138,6 +142,10 @@ const App = () => {
 
   const toggleAutoScroll = () => {
     setIsAutoScrolling(!isAutoScrolling)
+  }
+
+  const getStaticImage = (index) => {
+    return staticImages[index % staticImages.length] || "/placeholder.svg?height=400&width=400"
   }
 
   return (
@@ -255,7 +263,9 @@ const App = () => {
               <div key={imgIndex} className="memory-card">
                 <img
                   src={
-                    imagesLoaded ? imageManager.getNextPhoto() : "/placeholder.svg?height=400&width=400&query=loading"
+                    imagesLoaded
+                      ? getStaticImage(sectionIndex * 4 + imgIndex)
+                      : "/placeholder.svg?height=400&width=400&query=loading"
                   }
                   alt={`Memory ${imgIndex + 1}`}
                   className="memory-image"
@@ -312,7 +322,9 @@ const App = () => {
                 </p>
                 <img
                   src={
-                    imagesLoaded ? imageManager.getNextPhoto() : "/placeholder.svg?height=300&width=400&query=loading"
+                    imagesLoaded
+                      ? getStaticImage(20 + monthIndex)
+                      : "/placeholder.svg?height=300&width=400&query=loading"
                   }
                   alt={`Month ${monthIndex + 1}`}
                   className="timeline-image"
@@ -333,7 +345,9 @@ const App = () => {
               <div key={photoIndex} className={`collage-item item-${photoIndex + 1}`}>
                 <img
                   src={
-                    imagesLoaded ? imageManager.getNextPhoto() : "/placeholder.svg?height=250&width=250&query=loading"
+                    imagesLoaded
+                      ? getStaticImage(35 + collageIndex * 6 + photoIndex)
+                      : "/placeholder.svg?height=250&width=250&query=loading"
                   }
                   alt={`Collage photo ${photoIndex + 1}`}
                   className="collage-photo"
@@ -353,7 +367,7 @@ const App = () => {
           {Array.from({ length: 8 }, (_, index) => (
             <div key={index} className="portrait-item">
               <img
-                src={imagesLoaded ? imageManager.getNextPhoto() : "/placeholder.svg?height=400&width=300&query=loading"}
+                src={imagesLoaded ? getStaticImage(50 + index) : "/placeholder.svg?height=400&width=300&query=loading"}
                 alt={`Portrait ${index + 1}`}
                 className="portrait-image"
               />
@@ -374,7 +388,7 @@ const App = () => {
           {Array.from({ length: 6 }, (_, index) => (
             <div key={index} className="landscape-item">
               <img
-                src={imagesLoaded ? imageManager.getNextPhoto() : "/placeholder.svg?height=300&width=500&query=loading"}
+                src={imagesLoaded ? getStaticImage(60 + index) : "/placeholder.svg?height=300&width=500&query=loading"}
                 alt={`Landscape ${index + 1}`}
                 className="landscape-image"
               />
@@ -396,7 +410,7 @@ const App = () => {
           {Array.from({ length: 9 }, (_, index) => (
             <div key={index} className="square-item">
               <img
-                src={imagesLoaded ? imageManager.getNextPhoto() : "/placeholder.svg?height=300&width=300&query=loading"}
+                src={imagesLoaded ? getStaticImage(70 + index) : "/placeholder.svg?height=300&width=300&query=loading"}
                 alt={`Square moment ${index + 1}`}
                 className="square-image"
               />
